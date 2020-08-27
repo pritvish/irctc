@@ -2,6 +2,7 @@ package org.rail.irctc.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -11,6 +12,7 @@ public class Route {
     private Integer routeId;
     private String source;
     private String destination;
+    @OneToMany(mappedBy = "route")
     private List<Train> trainList;
 
     public Route(Integer routeId, String source, String destination, List<Train> trainList) {

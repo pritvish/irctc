@@ -2,6 +2,7 @@ package org.rail.irctc.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Train {
@@ -12,13 +13,16 @@ public class Train {
     private String arrivalTime;
     private String departureTime;
     private Double fare;
+    @ManyToOne
+    private Route route;
 
-    public Train(Integer trainId, String trainName, String arrivalTime, String departureTime, Double fare) {
+    public Train(Integer trainId, String trainName, String arrivalTime, String departureTime, Double fare, Route route) {
         this.trainId = trainId;
         this.trainName = trainName;
         this.arrivalTime = arrivalTime;
         this.departureTime = departureTime;
         this.fare = fare;
+        this.route = route;
     }
 
     public Train() {
@@ -64,6 +68,14 @@ public class Train {
         this.fare = fare;
     }
 
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
     @Override
     public String toString() {
         return "Train{" +
@@ -72,6 +84,7 @@ public class Train {
                 ", arrivalTime='" + arrivalTime + '\'' +
                 ", departureTime='" + departureTime + '\'' +
                 ", fare=" + fare +
+                ", route=" + route +
                 '}';
     }
 }
