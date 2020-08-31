@@ -3,6 +3,7 @@ package org.rail.irctc.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Train {
@@ -13,7 +14,7 @@ public class Train {
     private String arrivalTime;
     private String departureTime;
     private Double fare;
-    @ManyToOne
+    @OneToOne
     private Route route;
 
     public Train(Integer trainId, String trainName, String arrivalTime, String departureTime, Double fare, Route route) {
